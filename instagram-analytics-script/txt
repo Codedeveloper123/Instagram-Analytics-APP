@@ -1,0 +1,14 @@
+ c.execute(
+        """INSERT INTO instagramstatistics VALUES(?,?,?,?,?)""",
+        (currentdate, numberOfPosts, numberoffollowers, engagmentnumber, reachnumber),
+    )
+"""
+conn.commit()
+c.execute("""SELECT * FROM instagramstatistics""")
+results = c.fetchall()
+c.execute("""SELECT * FROM latestpoststats""")
+latestpost = c.fetchall()
+print(results)
+print(latestpost)
+conn.close()
+"""
