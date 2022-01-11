@@ -6,7 +6,6 @@ from statistics import (
     followergrowthrate,
 )
 from defines import getCreds
-from webscraper import getAllRelevantData
 import sqlite3
 from datetime import datetime
 from dateutil.parser import parse
