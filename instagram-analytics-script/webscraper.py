@@ -1,4 +1,4 @@
-from defines import getCreds, makeApiCall
+from defines import get_creds, make_api_call
 from get_user_media import WebScrapper
 import datetime
 import sqlite3
@@ -11,10 +11,11 @@ c = conn.cursor()
 # c.execute(
 # """CREATE TABLE latestpoststats(date DATE,engagment REAL,impressions REAL,reach REAL)"""
 # )
+# Use this command to clear the latestpoststats table if desired
 # c.execute("""DROP TABLE latestpoststats""")
-def getAllRelevantData(params):
+def get_all_relevant_data(params):
     webscrapper = WebScrapper()
-    buisness_discovery = webscrapper.getAccountInfo(params)
+    buisness_discovery = webscrapper.get_account_info(params)
     username = buisness_discovery["json_data"]["business_discovery"]["username"]
     numberOfPosts = buisness_discovery["json_data"]["business_discovery"]["media_count"]
     numberoffollowers = buisness_discovery["json_data"]["business_discovery"][
@@ -26,27 +27,27 @@ def getAllRelevantData(params):
     medialist = []
     engagmentnumber = 0
     reachnumber = 0
-    respons = webscrapper.getAllUserMediaIds(params, medialist, pagingURL="")
-    response = webscrapper.getUserMedia2(params)
+    respons = webscrapper.get_all_user_media_ids(params, medialist, pagingURL="")
+    response = webscrapper.get_specific_user_media_post(params)
     latestpostdate = response["json_data"]["data"][0]["timestamp"]
     params["latest_media_id"] = response["json_data"]["data"][0]["id"]
     params["metric"] = "engagement,impressions,reach"
-    latestpostdata = webscrapper.getMediaInsights(params)
+    latestpostdata = webscrapper.get_media_insights(params)
     latestpostengagment = latestpostdata["json_data"]["data"][0]["values"][0]["value"]
     latestpostreach = latestpostdata["json_data"]["data"][2]["values"][0]["value"]
     latestpostimpressions = latestpostdata["json_data"]["data"][1]["values"][0]["value"]
 
     while len(respons) < numberOfPosts:
-        respons = webscrapper.getAllUserMediaIds(
+        respons = webscrapper.get_all_user_media_ids(
             params, respons, response["json_data"]["paging"]["next"]
         )
-        response = webscrapper.getUserMedia2(
+        response = webscrapper.get_specific_user_media_post(
             params, response["json_data"]["paging"]["next"]
         )
     for mediaid in respons:
         params["latest_media_id"] = mediaid
         params["metric"] = "engagement,impressions,reach,saved"
-        stats = webscrapper.getMediaInsights(params)
+        stats = webscrapper.get_media_insights(params)
         engagmentnumber = (
             stats["json_data"]["data"][0]["values"][0]["value"] + engagmentnumber
         )
@@ -67,6 +68,7 @@ def getAllRelevantData(params):
     )
 
 
-parms = getCreds()
-getAllRelevantData(parms)
+parms = get_creds()
+get_all_relevant_data(parms)
 conn.commit()
+print("Data Collection complete")

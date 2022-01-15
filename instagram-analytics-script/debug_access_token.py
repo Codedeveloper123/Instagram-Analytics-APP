@@ -1,8 +1,8 @@
-from defines import getCreds, makeApiCall
+from defines import get_creds, make_api_call
 import datetime
 
 
-def debugAccessToken(params):
+def debug_access_token(params):
     """Get info on an access token
     API Endpoint:
         https://graph.facebook.com/
@@ -15,12 +15,12 @@ def debugAccessToken(params):
     endpointParams["input_token"] = params["access_token"]
     endpointParams["access_token"] = params["access_token"]
     url = params["graph_domain"] + "/debug_token"
-    return makeApiCall(url, endpointParams, params["debug"])
+    return make_api_call(url, endpointParams, params["debug"])
 
 
-params = getCreds()
+params = get_creds()
 params["debug"] = "yes"
-response = debugAccessToken(params)
+response = debug_access_token(params)
 print("\n Data Access Expires at: ")
 print(
     datetime.datetime.fromtimestamp(

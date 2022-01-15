@@ -1,8 +1,8 @@
-from defines import makeApiCall
+from defines import make_api_call
 
 
 class WebScrapper:
-    def getAllUserMediaIds(self, params, mediaidlist, pagingURL=""):
+    def get_all_user_media_ids(self, params, mediaidlist, pagingURL=""):
         """Get users media
 
         API Endpoint:
@@ -21,12 +21,12 @@ class WebScrapper:
             )  # endpoint url
         else:  # get specific page
             url = pagingURL
-        response = makeApiCall(url, endpointParams, params["debug"])
+        response = make_api_call(url, endpointParams, params["debug"])
         for post in response["json_data"]["data"]:
             mediaidlist.append(post["id"])
         return mediaidlist
 
-    def getUserMedia2(self, params, pagingURL=""):
+    def get_specific_user_media_post(self, params, pagingURL=""):
         """Get users media
 
         API Endpoint:
@@ -45,9 +45,9 @@ class WebScrapper:
             )  # endpoint url
         else:  # get specific page
             url = pagingURL
-        return makeApiCall(url, endpointParams, params["debug"])
+        return make_api_call(url, endpointParams, params["debug"])
 
-    def getAccountInfo(self, params):
+    def get_account_info(self, params):
         """Get info on a users account
 
         API Endpoint:
@@ -63,9 +63,9 @@ class WebScrapper:
         )
         endpointParams["access_token"] = params["access_token"]
         url = params["endpoint_base"] + params["instagram_account"]
-        return makeApiCall(url, endpointParams, params["debug"])
+        return make_api_call(url, endpointParams, params["debug"])
 
-    def getMediaInsights(self, params):
+    def get_media_insights(self, params):
         """Get insights for a specific media id
 
         API Endpoint:
@@ -77,9 +77,9 @@ class WebScrapper:
         endpointParams["metric"] = params["metric"]  # fields to get back
         endpointParams["access_token"] = params["access_token"]  # access token
         url = params["endpoint_base"] + params["latest_media_id"] + "/insights"
-        return makeApiCall(url, endpointParams, params["debug"])  # make the api call
+        return make_api_call(url, endpointParams, params["debug"])  # make the api call
 
-    def getUserInsights(self, params):
+    def get_user_insights(self, params):
         """Get insights for a users account
 
         API Endpoint:
@@ -92,4 +92,4 @@ class WebScrapper:
         endpointParams["period"] = "day"
         endpointParams["access_token"] = params["access_token"]
         url = params["endpoint_base"] + params["instagram_account"] + "/insights"
-        return makeApiCall(url, endpointParams, params["debug"])
+        return make_api_call(url, endpointParams, params["debug"])

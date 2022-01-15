@@ -1,7 +1,7 @@
-from defines import getCreds, makeApiCall
+from defines import get_creds, make_api_call
 
 
-def getLongLivedAccessToken(params):
+def get_long_lived_access_token(params):
     """Get long lived access token
 
     API Endpoint:
@@ -15,12 +15,12 @@ def getLongLivedAccessToken(params):
     endpointParams["client_secret"] = params["client_secret"]
     endpointParams["fb_exchange_token"] = params["access_token"]
     url = params["endpoint_base"] + "oauth/access_token"
-    return makeApiCall(url, endpointParams, params["debug"])
+    return make_api_call(url, endpointParams, params["debug"])
 
 
-params = getCreds()
+params = get_creds()
 params["debug"] = "yes"
-response = getLongLivedAccessToken(params)
+response = get_long_lived_access_token(params)
 print("\n ---- ACCESS TOKEN INFO ----\n")  # section header
 print("Access Token:")  # label
 print(response["json_data"]["access_token"])  # display access token

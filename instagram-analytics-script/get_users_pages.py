@@ -1,7 +1,7 @@
-from defines import getCreds, makeApiCall
+from defines import get_creds, make_api_call
 
 
-def getUsersPages(params):
+def get_users_pages(params):
     """Get facebook pages for a user
 
     API Endpoint:
@@ -12,12 +12,12 @@ def getUsersPages(params):
     endpointParams = dict()
     endpointParams["access_token"] = params["access_token"]
     url = params["endpoint_base"] + "me/accounts"
-    return makeApiCall(url, endpointParams, params["debug"])
+    return make_api_call(url, endpointParams, params["debug"])
 
 
-params = getCreds()
+params = get_creds()
 params["debug"] = "yes"
-response = getUsersPages(params)
+response = get_users_pages(params)
 
 print("\n---- FACEBOOK PAGE INFO ----\n")  # section heading
 print("Page Name:")  # label

@@ -1,7 +1,7 @@
-from defines import getCreds, makeApiCall
+from defines import get_creds, make_api_call
 
 
-def getInstagramAccount(params):
+def get_instagram_account(params):
     """Get instagram account
 
     API Endpoint:
@@ -15,12 +15,11 @@ def getInstagramAccount(params):
     ]  # tell facebook we want to exchange token
     endpointParams["fields"] = "instagram_business_account "  # access token
     url = params["endpoint_base"] + params["page_id"]  # endpoint url
-    return makeApiCall(url, endpointParams, params["debug"])  # make the api call
+    return make_api_call(url, endpointParams, params["debug"])  # make the api call
 
 
-params = getCreds()
-params["debug"] = "yes"
-response = getInstagramAccount(params)
+params = get_creds()
+response = get_instagram_account(params)
 print("\n---- INSTAGRAM ACCOUNT INFO ----\n")
 print("Page Id:")  # label
 print(response["json_data"]["id"])  # display the page id

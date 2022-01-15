@@ -1,11 +1,11 @@
 from statistics import (
-    engagmentPerPost,
-    engagmentperfollower,
-    reachrate,
-    calculateTimeDifference,
-    followergrowthrate,
+    engagment_per_post,
+    engagment_per_follower,
+    reach_rate,
+    calculate_time_difference,
+    follower_growth_rate,
 )
-from defines import getCreds
+from defines import get_creds
 import sqlite3
 from datetime import datetime
 from dateutil.parser import parse
@@ -43,10 +43,10 @@ follower = follower_number[0]
 reach = reach_number[0]
 datetime_todays_date = parse(todays_date)
 datetime_last_date = parse(lastdate)
-average_engagment_per_post = engagmentPerPost(engage, posts)
-average_engagment_per_follower = engagmentperfollower(engage, follower)
-number_of_followers_that_see_post = reachrate(reach, follower)
-followers_gained_since_last_post = followergrowthrate(
+average_engagment_per_post = engagment_per_post(engage, posts)
+average_engagment_per_follower = engagment_per_follower(engage, follower)
+number_of_followers_that_see_post = reach_rate(reach, follower)
+followers_gained_since_last_post = follower_growth_rate(
     follower, lastfollower, datetime_todays_date, datetime_last_date
 )
 firststat = "The reach rate for the latest post  is {}%. ".format(

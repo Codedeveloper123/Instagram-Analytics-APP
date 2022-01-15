@@ -5,7 +5,7 @@ import os
 from requests.models import Response
 
 
-def getCreds():
+def get_creds():
     dotenv.load_dotenv(".env")
 
     creds = dict()
@@ -23,7 +23,7 @@ def getCreds():
     return creds
 
 
-def makeApiCall(url, endpointParams, debug="none"):
+def make_api_call(url, endpointParams, debug="none"):
     data = requests.get(url, endpointParams)
     if data.status_code == 400:
         print(
@@ -36,11 +36,11 @@ def makeApiCall(url, endpointParams, debug="none"):
     response["json_data"] = json.loads(data.content)
     response["json_data_pretty"] = json.dumps(response["json_data"], indent=4)
     if "yes" == debug:
-        displayApiCallData(response)
+        display_api_call_data(response)
     return response
 
 
-def displayApiCallData(response):
+def display_api_call_data(response):
     print("\nURL: ")
     print(response["url"])
     print("\nEndpoint Params: ")
