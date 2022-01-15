@@ -26,5 +26,5 @@ print("Page Id:")  # label
 print(response["json_data"]["id"])  # display the page id
 print("\nInstagram Account Id:")  # label
 print(
-    response["json_data"]["instagram_business_account "][0]
+    response["json_data"]["instagram_business_account"]["id"]
 )  # display the instagram account id

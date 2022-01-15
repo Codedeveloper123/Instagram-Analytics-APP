@@ -25,6 +25,10 @@ def getCreds():
 
 def makeApiCall(url, endpointParams, debug="none"):
     data = requests.get(url, endpointParams)
+    if data.status_code == 400:
+        print(
+            "Your authentication access has been expired generate a new access token if that dosen't solve issue generate new page access token"
+        )
     response = dict()
     response["url"] = url
     response["endpoint_params"] = endpointParams
