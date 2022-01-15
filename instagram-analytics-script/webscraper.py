@@ -13,6 +13,10 @@ c = conn.cursor()
 # )
 # Use this command to clear the latestpoststats table if desired
 # c.execute("""DROP TABLE latestpoststats""")
+# Use this command to clear the instagramstatistics table if desired.
+# c.execute("DROP Table instagramstatistics")
+
+
 def get_all_relevant_data(params):
     webscrapper = WebScrapper()
     buisness_discovery = webscrapper.get_account_info(params)

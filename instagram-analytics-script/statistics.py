@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-
+## This file contains all the statistic functions I run on the data.
 def engagment_per_post(totalengagmentnumber, totalnumberofPosts):
     rate = totalengagmentnumber / totalnumberofPosts
     return rate

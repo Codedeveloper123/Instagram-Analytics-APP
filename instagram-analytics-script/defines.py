@@ -4,7 +4,7 @@ import dotenv
 import os
 from requests.models import Response
 
-
+## This function gets all necessary credentials for functions.
 def get_creds():
     dotenv.load_dotenv(".env")
 
@@ -29,6 +29,7 @@ def make_api_call(url, endpointParams, debug="none"):
         print(
             "Your authentication access has been expired generate a new access token if that dosen't solve issue generate new page access token"
         )
+        return 0
     response = dict()
     response["url"] = url
     response["endpoint_params"] = endpointParams

@@ -1,6 +1,6 @@
 from defines import make_api_call
 
-
+## This class holds all functions related to getting data from API
 class WebScrapper:
     def get_all_user_media_ids(self, params, mediaidlist, pagingURL=""):
         """Get users media

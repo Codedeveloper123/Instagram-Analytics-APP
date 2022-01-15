@@ -1,7 +1,7 @@
 from defines import get_creds, make_api_call
 import datetime
 
-
+# This function is usefuel to get information on the access token you are currently using.
 def debug_access_token(params):
     """Get info on an access token
     API Endpoint:

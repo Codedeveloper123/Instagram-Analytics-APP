@@ -19,7 +19,6 @@ def get_long_lived_access_token(params):
 
 
 params = get_creds()
-params["debug"] = "yes"
 response = get_long_lived_access_token(params)
 print("\n ---- ACCESS TOKEN INFO ----\n")  # section header
 print("Access Token:")  # label
