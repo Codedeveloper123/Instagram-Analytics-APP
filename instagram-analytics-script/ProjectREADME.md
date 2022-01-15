@@ -1,9 +1,13 @@
 # SETUP
 ## What you will need installed 
-    1. Download Latest Version of python if not installed already 
+    1. Download  python if not installed already
+       1.  Follow this link to do so https://medium.com/co-learning-lounge/how-to-download-install-python-on-windows-2021-44a707994013
     2. Install PIP if not installed already
+       1. Follow this link to do so https://pip.pypa.io/en/stable/installation/
     3. Install requests library if not installed already
+       1. Follow this link to do so https://docs.python-requests.org/en/master/user/install/
     4. Install python.dotenv if not installed already
+       1. To do so type pip install python-dotenv in terminal
 ## Instagram Account Setup
     1. First Your instagram account will have to be set to a buisness account
     2. Next create a facebook page from your facebook you can do this following this link https://www.businessinsider.com/how-to-create-a-facebook-business-page
